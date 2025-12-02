@@ -1,162 +1,172 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>Quarterly Earnings — Presentation</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8" />
+  <title>Quarterly Earnings — Reveal.js</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Reveal.js from CDN -->
+  <!-- Reveal core styles -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/theme/black.css" id="theme">
-  <!-- Highlight.js (for syntax highlighting) -->
+
+  <!-- Highlight.js styles (for code highlighting) -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/default.min.css">
 
   <style>
-    /* small custom tweak */
-    .reveal .slides section { font-family: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
-    .email { font-size: 0.9rem; opacity: 0.9; }
+    body { font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
+    .contact { font-size: 0.95rem; margin-top: .5rem; opacity: .95; }
+    .small-note { font-size: 0.85rem; color: rgba(255,255,255,0.75); }
+    pre code { font-size: 0.9rem; }
   </style>
 </head>
 <body>
+
   <div class="reveal">
     <div class="slides">
 
-      <!-- Title slide (HTML, contains fragments + speaker notes) -->
-<section>
-  <h1>Quarterly Earnings Report</h1>
-  <h3>Q4 Financial Summary & Insights</h3>
+      <!-- Title slide with required plain email text -->
+      <section>
+        <h1>Quarterly Earnings Report</h1>
+        <h3>Q4 Financial Summary & Insights</h3>
 
-  <!-- REQUIRED EMAIL (explicit, plain text, easily detectable) -->
-  <p>24f2000773@ds.study.iitm.ac.in</p>
+        <!-- REQUIRED: plain email visible in slide content for automated checkers -->
+        <p class="contact">24f2000773@ds.study.iitm.ac.in</p>
 
-  <p>
-    <span class="fragment">Strong revenue growth</span><br>
-    <span class="fragment">Improved margins</span><br>
-    <span class="fragment">Major drivers: product A, international expansion</span>
-  </p>
+        <p>
+          <span class="fragment">Revenue growth vs prior quarter</span><br>
+          <span class="fragment">Margin expansion through cost controls</span><br>
+          <span class="fragment">Key drivers: Product A, geographic expansion</span>
+        </p>
 
-  <aside class="notes">
-    Open with summary of key performance and reference the contact email.
-  </aside>
-</section>
+        <aside class="notes">
+          Start with the headline: revenue and margin improvements. Mention email is shown for follow-up.
+        </aside>
+      </section>
 
-
-      <!-- A slide written in Markdown using data-markdown (demonstrates markdown support) -->
+      <!-- Markdown slide (uses Reveal's markdown plugin) -->
       <section data-markdown>
         <script type="text/template">
-## Highlights (Markdown slide)
+## Highlights (Markdown)
 
 - **Revenue:** $120M (YoY +12%)
 - **EBITDA:** $18M (Margin +150 bps)
-- **Cash flow:** Positive for the quarter
+- **Free Cash Flow:** Positive this quarter
 
 ### Quick takeaways
 1. Product A adoption accelerated.
-2. Cost optimization improved operating leverage.
+2. Operating leverage improved via automation.
 3. Guidance updated for next quarter.
         </script>
 
         <aside class="notes">
-          Walk through the three bullets; call out the updated guidance at the end.
+          Walk through each bullet and call out the updated guidance at the end.
         </aside>
       </section>
 
-      <!-- Slide with a code sample and syntax highlighting -->
+      <!-- Slide with SQL code sample; language class enables highlighting -->
       <section>
-        <h2>Data example — SQL (Revenue by product)</h2>
-        <pre><code class="language-sql">-- Top products by revenue (Q4)
+        <h2>Data Example — SQL</h2>
+        <pre><code class="language-sql">-- Top products by revenue (quarter)
 SELECT
   product_id,
   product_name,
-  SUM(revenue) AS revenue_q4
+  SUM(revenue) AS revenue_qtr
 FROM sales
-WHERE sale_date BETWEEN '2025-07-01' AND '2025-09-30'
+WHERE sale_date >= '2025-10-01' AND sale_date &lt; '2025-12-01'
 GROUP BY product_id, product_name
-ORDER BY revenue_q4 DESC
-LIMIT 10;</code></pre>
+ORDER BY revenue_qtr DESC
+LIMIT 10;
+        </code></pre>
 
         <aside class="notes">
-          Explain the query and where the data pipeline sources this table from. Mention that we remove duplicates upstream and handle NULLs in the ETL.
+          Explain ETL upstream handling (dedup, nulls) and where this table is sourced.
         </aside>
       </section>
 
-      <!-- Slide with a mathematical equation (financial formula) -->
+      <!-- Slide with a financial equation (MathJax) -->
       <section>
         <h2>Financial Formula</h2>
         <p>Net Present Value (NPV):</p>
         <p class="fragment">\( \mathrm{NPV} = \sum_{t=0}^{T} \dfrac{C_t}{(1+r)^t} \)</p>
-
-        <p class="fragment">Discount Rate \(r\) used: 8% (WACC)</p>
+        <p class="fragment small-note">Using discount rate \(r = 0.08\) (8% — approximate WACC)</p>
 
         <aside class="notes">
-          Show how we discount cash flows for new projects; emphasize sensitivity to discount rate.
+          Show NPV sensitivity to discount rate; emphasize impact on long-term projects.
         </aside>
       </section>
 
-      <!-- Slide demonstrating incremental reveal with fragments -->
+      <!-- Animated fragments slide -->
       <section>
-        <h2>Key Initiatives (animated)</h2>
+        <h2>Key Initiatives</h2>
         <ul>
-          <li class="fragment">Expand in APAC — target 3 new markets</li>
-          <li class="fragment">Product A — focus on retention and upsell</li>
-          <li class="fragment">Operational efficiency — automate billing</li>
+          <li class="fragment">Expand in APAC — launch in 3 new markets</li>
+          <li class="fragment">Product A — retention & upsell programs</li>
+          <li class="fragment">Ops — automate billing and collections</li>
         </ul>
 
         <aside class="notes">
-          Use fragments to reveal initiatives one-by-one; tie each to a KPI.
+          Reveal items one-by-one, connect each to a KPI and owner.
         </aside>
       </section>
 
-      <!-- Closing slide -->
+      <!-- Closing slide with contact again in mailto form (also plain text already present earlier) -->
       <section>
         <h2>Questions & Next Steps</h2>
         <p>Contact: <a href="mailto:24f2000773@ds.study.iitm.ac.in">24f2000773@ds.study.iitm.ac.in</a></p>
 
         <aside class="notes">
-          Invite questions and reference the appendices for backup data.
+          Invite questions and reference appendices for backup detail.
+        </aside>
+      </section>
+
+      <!-- Appendix slide with small developer note (optional) -->
+      <section>
+        <h3>Appendix: Presentation Tech</h3>
+        <p class="small-note">Built with Reveal.js (CDN), Highlight.js, and MathJax. Deploy this repo's root to GitHub Pages to publish.</p>
+
+        <aside class="notes">
+          If you need the full repo + GH Actions workflow, include the workflow under .github/workflows/deploy.yml to publish to gh-pages or place files in /docs on main branch and set Pages source.
         </aside>
       </section>
 
     </div>
   </div>
 
-  <!-- Reveal.js and plugins -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.js"></script>
-
-  <!-- Markdown plugin (shipped with reveal.js) -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.esm.js"></script>
-  <!-- Notes plugin -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.esm.js"></script>
-  <!-- Highlight plugin (for code highlighting) -->
-  <script src="https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.esm.js"></script>
-
-  <!-- Highlight.js (fallback for language support) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-
-  <!-- MathJax (for math rendering) -->
+  <!-- MathJax for equations -->
   <script>
     window.MathJax = {
-      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] },
+      tex: { inlineMath: [['$', '$'], ['\\(', '\\)']], tags: 'ams' },
       svg: { fontCache: 'global' }
     };
   </script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
 
-  <script>
+  <!-- Use ESM build of Reveal and plugins for robust plugin loading -->
+  <script type="module">
+    import Reveal from 'https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/dist/reveal.esm.js';
+    import Markdown from 'https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/markdown/markdown.esm.js';
+    import Highlight from 'https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/highlight/highlight.esm.js';
+    import Notes from 'https://cdn.jsdelivr.net/npm/reveal.js@4.5.0/plugin/notes/notes.esm.js';
+
     Reveal.initialize({
       hash: true,
       controls: true,
       progress: true,
       slideNumber: true,
-      plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ],
+      plugins: [ Markdown, Highlight, Notes ],
       markdown: {
         smartypants: true
       },
-      // highlight.js initialization (optional)
+      // optional: auto-apply highlight.js to code blocks after slide changes
       highlight: {
-        // leave defaults; highlight.js loaded above
+        // leave defaults
       }
     });
   </script>
+
+  <!-- Fallback highlight.js script (ensures languages registered) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+  <script>if(window.hljs) { window.hljs.highlightAll(); }</script>
+
 </body>
 </html>
